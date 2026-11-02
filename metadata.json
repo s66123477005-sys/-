@@ -1,0 +1,8 @@
+{
+  "name": "Remix ระบบบริหารจัดการหลังบ้าน",
+  "description": "ระบบจัดการสต็อกและคลังสินค้าครบวงจรตามผังการทำงาน (System Flow Diagram) พร้อมการจัดการสินค้า รับเข้า เบิกออก ตรวจนับคงเหลือ รายงาน และจัดการสิทธิ์",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

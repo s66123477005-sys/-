@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --theme-pink: #ffb6c1;
+    --theme-orange: #ffc9b6;
+    --theme-pink-hover: #fca0af;
+    --theme-orange-hover: #fbb39d;
+    --theme-pink-deep: #b83350;
+    --theme-orange-deep: #c45229;
+  }
+
+  body {
+    font-family: 'Prompt', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #faf5f4;
+    color: #1e293b;
+  }
+}
+
+/* Custom theme helpers */
+.bg-theme-pink {
+  background-color: #ffb6c1;
+}
+.bg-theme-orange {
+  background-color: #ffc9b6;
+}
+.text-theme-pink {
+  color: #b83350;
+}
+.text-theme-orange {
+  color: #c45229;
+}
+.border-theme-pink {
+  border-color: #ffb6c1;
+}
+.border-theme-orange {
+  border-color: #ffc9b6;
+}
+.gradient-theme {
+  background: linear-gradient(135deg, #ffb6c1 0%, #ffc9b6 100%);
+}
+.gradient-theme-soft {
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.22) 0%, rgba(255, 201, 182, 0.28) 100%);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffc9b6;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffb6c1;
+}
+
+@media print {
+  header, aside, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
