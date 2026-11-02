@@ -1,4 +1,27 @@
 import { User, Product, StockTransaction } from '../types';
+import teddyImg from '../assets/images/teddy_bear_plush_1793645440099.jpg';
+import rabbitImg from '../assets/images/pastel_rabbit_doll_1793645441868.jpg';
+import capybaraImg from '../assets/images/capybara_plush_1793645441099.jpg';
+import catImg from '../assets/images/fat_orange_cat_plush_1793645444306.jpg';
+import cottonImg from '../assets/images/handmade_cotton_doll_1793645442184.jpg';
+
+export const DOLL_ASSET_IMAGES = {
+  teddy: teddyImg,
+  rabbit: rabbitImg,
+  capybara: capybaraImg,
+  cat: catImg,
+  cotton: cottonImg,
+};
+
+export const resolveDollImageUrl = (url?: string): string => {
+  if (!url) return teddyImg;
+  if (url.includes('teddy_bear_plush')) return teddyImg;
+  if (url.includes('pastel_rabbit_doll')) return rabbitImg;
+  if (url.includes('capybara_plush')) return capybaraImg;
+  if (url.includes('fat_orange_cat_plush')) return catImg;
+  if (url.includes('handmade_cotton_doll')) return cottonImg;
+  return url;
+};
 
 export const INITIAL_USERS: User[] = [
   {
@@ -99,31 +122,31 @@ export const SAMPLE_DOLL_PHOTOS: SampleDollPhoto[] = [
     id: 'photo-teddy',
     label: 'หมีเท็ดดี้บราวนี่ตัวยักษ์ ขนปุยพรีเมียม',
     category: 'ตุ๊กตาหมีและสัตว์ขนปุย',
-    imageUrl: '/src/assets/images/teddy_bear_plush_1793645440099.jpg',
+    imageUrl: teddyImg,
   },
   {
     id: 'photo-rabbit',
     label: 'กระต่ายหูยาวมินต์บลอสซั่ม พาสเทล',
     category: 'ตุ๊กตาหมีและสัตว์ขนปุย',
-    imageUrl: '/src/assets/images/pastel_rabbit_doll_1793645441868.jpg',
+    imageUrl: rabbitImg,
   },
   {
     id: 'photo-capybara',
     label: 'คาปิบาร่าแบกเป้ส้ม คาแรคเตอร์ยอดฮิต',
     category: 'ตุ๊กตาคาแรคเตอร์ & อนิเมะ',
-    imageUrl: '/src/assets/images/capybara_plush_1793645441099.jpg',
+    imageUrl: capybaraImg,
   },
   {
     id: 'photo-cat',
     label: 'แมวส้มอ้วนกลม หมอนกอดโมจินุ่มนิ่ม',
     category: 'ตุ๊กตาคาแรคเตอร์ & อนิเมะ',
-    imageUrl: '/src/assets/images/fat_orange_cat_plush_1793645444306.jpg',
+    imageUrl: catImg,
   },
   {
     id: 'photo-cotton',
     label: 'ตุ๊กตาผ้าฝ้ายทอมือ สไตล์วินเทจแฮนด์เมด',
     category: 'ตุ๊กตาผ้าฝ้ายแฮนด์เมด',
-    imageUrl: '/src/assets/images/handmade_cotton_doll_1793645442184.jpg',
+    imageUrl: cottonImg,
   },
 ];
 
@@ -143,7 +166,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน B-01 (ตุ๊กตาตัวใหญ่)',
     description: 'ใยสังเคราะห์ไมโครไฟเบอร์ นุ่มเด้ง ปลอดภัยสำหรับเด็ก ไม่เก็บฝุ่น',
     supplierName: 'โรงงานตัดเย็บตุ๊กตาสยามพลัช',
-    imageUrl: '/src/assets/images/teddy_bear_plush_1793645440099.jpg',
+    imageUrl: teddyImg,
     createdAt: '2026-10-01',
     updatedAt: '2026-11-01',
   },
@@ -162,7 +185,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน A-02 (หน้าร้าน)',
     description: 'ขนนุ่มพิเศษสีพาสเทล หูยาวสามารถผูกโบว์ได้ น่ารักเป็นของขวัญ',
     supplierName: 'โรงงานตัดเย็บตุ๊กตาสยามพลัช',
-    imageUrl: '/src/assets/images/pastel_rabbit_doll_1793645441868.jpg',
+    imageUrl: rabbitImg,
     createdAt: '2026-10-05',
     updatedAt: '2026-10-28',
   },
@@ -181,7 +204,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน A-01 (ชั้นโชว์สินค้าฮิต)',
     description: 'คาปิบาร่ายอดฮิต แบกผลส้มถอดได้ ผ้านุ่มโมจิสโลว์ไรซ์',
     supplierName: 'อินดี้ทอยส์ โปรดักชั่น',
-    imageUrl: '/src/assets/images/capybara_plush_1793645441099.jpg',
+    imageUrl: capybaraImg,
     createdAt: '2026-10-10',
     updatedAt: '2026-11-02',
   },
@@ -200,7 +223,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน A-03 (ชั้นโชว์)',
     description: 'หมอนข้างตุ๊กตาแมวส้ม หน้าตาตลกน่ารัก กอดอุ่นสบาย',
     supplierName: 'อินดี้ทอยส์ โปรดักชั่น',
-    imageUrl: '/src/assets/images/fat_orange_cat_plush_1793645444306.jpg',
+    imageUrl: catImg,
     createdAt: '2026-09-15',
     updatedAt: '2026-10-15',
   },
@@ -219,7 +242,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน E-01 (งานแฮนด์เมด)',
     description: 'ผลงานออกแบบลิขสิทธิ์เฉพาะร้านตุ๊กตาพิเชียรแก้ว เย็บมือด้วยผ้าฝ้ายธรรมชาติ',
     supplierName: 'กลุ่มวิสาหกิจตัดเย็บพิเชียรแก้ว',
-    imageUrl: '/src/assets/images/handmade_cotton_doll_1793645442184.jpg',
+    imageUrl: cottonImg,
     createdAt: '2026-09-20',
     updatedAt: '2026-10-25',
   },
@@ -238,7 +261,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน D-01 (เคาน์เตอร์แคชเชียร์)',
     description: 'พวงกุญแจห้อยกระเป๋า ขนนุ่ม ตะขอเกี่ยวสีทองสวยหรู',
     supplierName: 'กิฟท์แอนด์แอกเซสซอรี่ ซัพพลาย',
-    imageUrl: '/src/assets/images/teddy_bear_plush_1793645440099.jpg',
+    imageUrl: teddyImg,
     createdAt: '2026-10-02',
     updatedAt: '2026-11-01',
   },
@@ -257,7 +280,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน C-01 (ช่อของขวัญพิเศษ)',
     description: 'จัดช่อสำเร็จรูปพร้อมตุ๊กตาหมีใส่ชุดครุยรับปริญญา เหมาะสำหรับแสดงความยินดี',
     supplierName: 'ฝ่ายจัดช่อของขวัญร้านพิเชียรแก้ว',
-    imageUrl: '/src/assets/images/pastel_rabbit_doll_1793645441868.jpg',
+    imageUrl: rabbitImg,
     createdAt: '2026-09-01',
     updatedAt: '2026-10-20',
   },
@@ -276,7 +299,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน D-02 (เสื้อผ้าตุ๊กตา)',
     description: 'ชุดแฟชั่นตุ๊กตา งานตัดเย็บประณีต สวมใส่ง่ายด้วยตีนตุ๊กแก',
     supplierName: 'วิสาหกิจแฟชั่นตุ๊กตาพิเชียร',
-    imageUrl: '/src/assets/images/handmade_cotton_doll_1793645442184.jpg',
+    imageUrl: cottonImg,
     createdAt: '2026-10-05',
     updatedAt: '2026-10-30',
   },
@@ -295,7 +318,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     shelfLocation: 'โซน B-02 (ตุ๊กตายาว/หมอน)',
     description: 'ผ้ายืดเนื้อเนียนพิเศษ กอดฟิน นุ่มฟู คลายเครียดได้ดีเยี่ยม',
     supplierName: 'โรงงานตัดเย็บตุ๊กตาสยามพลัช',
-    imageUrl: '/src/assets/images/fat_orange_cat_plush_1793645444306.jpg',
+    imageUrl: catImg,
     createdAt: '2026-10-12',
     updatedAt: '2026-11-02',
   },

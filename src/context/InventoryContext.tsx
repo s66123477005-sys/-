@@ -6,7 +6,7 @@ import {
   SystemFlowStep, 
   TransactionType 
 } from '../types';
-import { INITIAL_USERS, INITIAL_PRODUCTS, INITIAL_TRANSACTIONS } from '../data/mockData';
+import { INITIAL_USERS, INITIAL_PRODUCTS, INITIAL_TRANSACTIONS, resolveDollImageUrl } from '../data/mockData';
 
 interface SystemNotification {
   type: 'success' | 'error' | 'warning' | 'info';
@@ -71,14 +71,14 @@ const InventoryContext = createContext<InventoryContextType | undefined>(undefin
 
 export const InventoryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Persistence keys
-  const USERS_KEY = 'phichiankaew_dolls_users_v4';
-  const PRODUCTS_KEY = 'phichiankaew_dolls_products_v4';
-  const TRANSACTIONS_KEY = 'phichiankaew_dolls_tx_v4';
-  const CURRENT_USER_KEY = 'phichiankaew_dolls_current_user_v4';
+  const USERS_KEY = 'phichiankaew_dolls_users_v5';
+  const PRODUCTS_KEY = 'phichiankaew_dolls_products_v5';
+  const TRANSACTIONS_KEY = 'phichiankaew_dolls_tx_v5';
+  const CURRENT_USER_KEY = 'phichiankaew_dolls_current_user_v5';
 
   const [users, setUsers] = useState<User[]>(() => {
     try {
-      const saved = localStorage.getItem(USERS_KEY) || localStorage.getItem('phichiankaew_dolls_users_v3');
+      const saved = localStorage.getItem(USERS_KEY) || localStorage.getItem('phichiankaew_dolls_users_v4');
       return saved ? JSON.parse(saved) : INITIAL_USERS;
     } catch {
       return INITIAL_USERS;
@@ -87,15 +87,15 @@ export const InventoryProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const [products, setProducts] = useState<Product[]>(() => {
     try {
-      const saved = localStorage.getItem(PRODUCTS_KEY) || localStorage.getItem('phichiankaew_dolls_products_v3');
+      const saved = localStorage.getItem(PRODUCTS_KEY) || localStorage.getItem('phichiankaew_dolls_products_v4');
       if (saved) {
         const parsed: Product[] = JSON.parse(saved);
         return parsed.map(p => {
           const match = INITIAL_PRODUCTS.find(ip => ip.id === p.id || ip.sku === p.sku);
-          if (!p.imageUrl && match?.imageUrl) {
-            return { ...p, imageUrl: match.imageUrl };
-          }
-          return p;
+          return {
+            ...p,
+            imageUrl: resolveDollImageUrl(p.imageUrl || match?.imageUrl),
+          };
         });
       }
       return INITIAL_PRODUCTS;
